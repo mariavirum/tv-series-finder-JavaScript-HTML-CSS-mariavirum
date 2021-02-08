@@ -12,15 +12,16 @@
 
 .title {
   padding: 30px;
+  text-transform: uppercase;
 }
 .principal-container {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  justify-content: space-between;
 }
 .container {
-  padding: 20px;
+  padding: 10px;
 }
 .input-container {
   text-align: center;
@@ -28,12 +29,24 @@
   background-color: blueviolet;
 }
 
-.favoriteItems-container {
-  width: 29%;
+.favorites-container {
+  width: 40%;
   background-color: chartreuse;
 }
 
-.searchItems-container {
-  width: 70%;
+.searches-container {
+  width: 60%;
   background-color: lightseagreen;
+}
+
+.searches-container__title {
+  padding: 10px;
+  padding-bottom: 40px;
+  text-transform: capitalize;
+}
+
+.list__item {
+  list-style: none;
+  padding: 40px;
+  border-bottom-style: groove;
 }
