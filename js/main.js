@@ -16,7 +16,7 @@ function callToApi() {
     .then((response) => response.json())
     .then((data) => {
       movies = data;
-      paintShows();
+      paintMovies();
     });
 }
 buttonElement.addEventListener("click", callToApi);
@@ -28,7 +28,7 @@ function handleForm(ev) {
 formElement.addEventListener("submit", handleForm);
 
 //PINTAR PELICULAS
-function paintShows() {
+function paintMovies() {
   let htmlCode = "";
 
   for (const movie of movies) {
@@ -79,18 +79,23 @@ function listenMovieEvents() {
 function handleMovie(ev) {
   const clickedMovieId = parseInt(ev.currentTarget.id);
   //console.log("me han clickado", clickedMovieId);
-  const movieFound = movies.find(function (movie) {
-    return movie.show.id === clickedMovieId;
+  const favoritesFoundIndex = favorites.findIndex(function (favorite) {
+    return favorite.show.id === clickedMovieId;
   });
-
-  favorites.push(movieFound);
-  console.log(favorites);
-  paintShows();
-  paintFavoriteShows();
+  if (favoritesFoundIndex === -1) {
+    const movieFound = movies.find(function (movie) {
+      return movie.show.id === clickedMovieId;
+    });
+    favorites.push(movieFound);
+  } else {
+    favorites.splice(favoritesFoundIndex, 1);
+  }
+  paintMovies();
+  paintFavoriteMovies();
 }
 
 //PINTAR FAVORITAS EN SU LISTA
-function paintFavoriteShows() {
+function paintFavoriteMovies() {
   let htmlCode = "";
 
   for (const favorite of favorites) {
