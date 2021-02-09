@@ -3,6 +3,7 @@
 const inputElement = document.querySelector(".js-input");
 const buttonElement = document.querySelector(".js-button");
 const searchesListElement = document.querySelector(".js-searches-list");
+const formElement = document.querySelector(".js-form");
 
 //Coger datos API
 function callToApi() {
@@ -15,6 +16,13 @@ function callToApi() {
 }
 
 buttonElement.addEventListener("click", callToApi);
+
+//PREVENT DEFAULT FORM
+function handleForm(ev) {
+  ev.preventDefault();
+}
+formElement.addEventListener("submit", handleForm);
+
 //PINTAR PELICULAS
 function paintShows(movies) {
   let htmlCode = "";
@@ -35,8 +43,4 @@ function paintShows(movies) {
   searchesListElement.innerHTML = htmlCode;
 }
 
-//EVENTO BÚSQUEDA
-/*function handleSearch() {
-  callToApi();
-  //setInLocalStorage(searchElement.value);
-}*/
+//SELECCIONAR FAVORITAS

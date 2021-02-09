@@ -50,3 +50,7 @@
   padding: 40px;
   border-bottom-style: groove;
 }
+
+.title__item {
+  padding-bottom: 20px;
+}
