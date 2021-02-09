@@ -34,6 +34,10 @@
   background-color: chartreuse;
 }
 
+.movie--favorite {
+  border: 2px solid red;
+}
+
 .searches-container {
   width: 60%;
   background-color: lightseagreen;
