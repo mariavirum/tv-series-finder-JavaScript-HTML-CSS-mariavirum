@@ -19,6 +19,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  background-color: silver;
 }
 .container {
   padding: 10px;
@@ -36,11 +37,12 @@
 .button {
   padding: 10px 50px;
   background-color: crimson;
+  font-weight: bolder;
 }
 
 .favorites-container {
   width: 40%;
-  background-color: chartreuse;
+  background-color: mediumspringgreen;
 }
 .favorites-container__title {
   padding: 10px;
@@ -48,8 +50,12 @@
   text-transform: capitalize;
 }
 
-.movie--favorite {
-  border: 2px solid red;
+.favorite-container {
+  border: 2px solid black;
+  background-color: black;
+}
+.favorite-title {
+  color: lightseagreen;
 }
 
 .searches-container {
@@ -58,17 +64,18 @@
 }
 
 .searches-container__title {
-  padding: 10px;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   text-transform: capitalize;
 }
 
 .list__item {
   list-style: none;
-  padding: 40px;
+  padding: 30px;
   border-bottom-style: groove;
+  margin-bottom: 10px;
 }
 
 .title__item {
+  font-size: 20px;
   padding-bottom: 20px;
 }

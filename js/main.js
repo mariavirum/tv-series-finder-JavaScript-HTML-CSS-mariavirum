@@ -6,7 +6,7 @@ const searchesListElement = document.querySelector(".js-searches-list");
 const formElement = document.querySelector(".js-form");
 const favoritesListElement = document.querySelector(".js-favorites-container");
 
-let movies = "";
+let movies = [];
 let favorites = [];
 
 //Coger datos API
@@ -33,8 +33,15 @@ function paintShows() {
 
   for (const movie of movies) {
     //console.log(movie.show.id);
-    htmlCode += `<li class="list__item js-item" id="${movie.show.id}">`;
-    htmlCode += `<p class="title__item">Título: ${movie.show.name}</p>`;
+    console.log(isFavoriteMovie(movie));
+    if (isFavoriteMovie(movie) === true) {
+      htmlCode += `<li class="list__item js-item favorite-container" id="${movie.show.id}">`;
+      htmlCode += `<p class="title__item favorite-title">Título: ${movie.show.name}</p>`;
+    } else {
+      htmlCode += `<li class="list__item js-item " id="${movie.show.id}">`;
+      htmlCode += `<p class="title__item">Título: ${movie.show.name}</p>`;
+    }
+
     if (movie.show.image !== null) {
       let image = movie.show.image.medium;
       htmlCode += `<img src= "${image}"/>`;
@@ -50,9 +57,9 @@ function paintShows() {
 }
 
 //DEFINIR PALETAS FAVORITAS
-function isFavoriteMovie() {
+function isFavoriteMovie(movie) {
   const favoriteFound = favorites.find((favorite) => {
-    return favorite.id === movie.show.id;
+    return favorite.show.id === movie.show.id;
   });
   if (favoriteFound === undefined) {
     return false;
@@ -78,6 +85,7 @@ function handleMovie(ev) {
 
   favorites.push(movieFound);
   console.log(favorites);
+  paintShows();
   paintFavoriteShows();
 }
 
