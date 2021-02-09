@@ -4,7 +4,7 @@ const inputElement = document.querySelector(".js-input");
 const buttonElement = document.querySelector(".js-button");
 const searchesListElement = document.querySelector(".js-searches-list");
 const formElement = document.querySelector(".js-form");
-const favoritesListElement = document.querySelector(".js-favorites-container");
+const favoritesListElement = document.querySelector(".js-favorite-list");
 
 let movies = [];
 let favorites = [];

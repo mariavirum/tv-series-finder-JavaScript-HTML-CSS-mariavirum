@@ -42,11 +42,11 @@
 
 .favorites-container {
   width: 40%;
-  background-color: mediumspringgreen;
+  background-color: lightcoral;
 }
 .favorites-container__title {
-  padding: 10px;
-  padding-bottom: 30px;
+  /*padding: 10px;
+  padding-bottom: 30px;*/
   text-transform: capitalize;
 }
 
