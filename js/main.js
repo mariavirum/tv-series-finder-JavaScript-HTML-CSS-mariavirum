@@ -16,10 +16,29 @@ function callToApi() {
     .then((response) => response.json())
     .then((data) => {
       movies = data;
-      paintMovies();
+      paintShows();
+      setInLocalStorage();
     });
 }
+
 buttonElement.addEventListener("click", callToApi);
+
+//LOCAL STORAGE
+function setInLocalStorage() {
+  const stringFavorites = JSON.stringify(favorites);
+  localStorage.setItem("favorites", stringFavorites);
+}
+
+function getFromLocalStorage() {
+  const localStorageFavorites = localStorage.getItem("favorites");
+  if (localStorageFavorites === null) {
+    callToApi();
+  } else {
+    const arrayFavorites = JSON.parse(localStorageFavorites);
+    favorites = arrayFavorites;
+    paintFavoriteShows();
+  }
+}
 
 //PREVENT DEFAULT FORM
 function handleForm(ev) {
@@ -28,12 +47,10 @@ function handleForm(ev) {
 formElement.addEventListener("submit", handleForm);
 
 //PINTAR PELICULAS
-function paintMovies() {
+function paintShows() {
   let htmlCode = "";
 
   for (const movie of movies) {
-    //console.log(movie.show.id);
-    console.log(isFavoriteMovie(movie));
     if (isFavoriteMovie(movie) === true) {
       htmlCode += `<li class="list__item js-item favorite-container" id="${movie.show.id}">`;
       htmlCode += `<p class="title__item favorite-title">Título: ${movie.show.name}</p>`;
@@ -78,7 +95,6 @@ function listenMovieEvents() {
 
 function handleMovie(ev) {
   const clickedMovieId = parseInt(ev.currentTarget.id);
-  //console.log("me han clickado", clickedMovieId);
   const favoritesFoundIndex = favorites.findIndex(function (favorite) {
     return favorite.show.id === clickedMovieId;
   });
@@ -90,12 +106,13 @@ function handleMovie(ev) {
   } else {
     favorites.splice(favoritesFoundIndex, 1);
   }
-  paintMovies();
-  //paintFavoriteMovies();
+  paintShows();
+  paintFavoriteShows();
+  setInLocalStorage();
 }
 
 //PINTAR FAVORITAS EN SU LISTA
-function paintFavoriteMovies() {
+function paintFavoriteShows() {
   let htmlCode = "";
 
   for (const favorite of favorites) {
@@ -115,3 +132,6 @@ function paintFavoriteMovies() {
 
   listenMovieEvents();
 }
+
+//ARRANCAR
+getFromLocalStorage();
