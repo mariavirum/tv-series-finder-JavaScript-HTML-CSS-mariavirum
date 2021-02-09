@@ -91,7 +91,7 @@ function handleMovie(ev) {
     favorites.splice(favoritesFoundIndex, 1);
   }
   paintMovies();
-  paintFavoriteMovies();
+  //paintFavoriteMovies();
 }
 
 //PINTAR FAVORITAS EN SU LISTA
