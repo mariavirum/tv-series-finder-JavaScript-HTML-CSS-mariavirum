@@ -29,9 +29,23 @@
   background-color: blueviolet;
 }
 
+.input {
+  font-size: 20px;
+}
+
+.button {
+  padding: 10px 50px;
+  background-color: crimson;
+}
+
 .favorites-container {
   width: 40%;
   background-color: chartreuse;
+}
+.favorites-container__title {
+  padding: 10px;
+  padding-bottom: 30px;
+  text-transform: capitalize;
 }
 
 .movie--favorite {
@@ -39,13 +53,13 @@
 }
 
 .searches-container {
-  width: 60%;
+  width: 59%;
   background-color: lightseagreen;
 }
 
 .searches-container__title {
   padding: 10px;
-  padding-bottom: 40px;
+  padding-bottom: 30px;
   text-transform: capitalize;
 }
 

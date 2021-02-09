@@ -78,5 +78,27 @@ function handleMovie(ev) {
 
   favorites.push(movieFound);
   console.log(favorites);
-  //paintFavoriteShows();
+  paintFavoriteShows();
+}
+
+//PINTAR FAVORITAS EN SU LISTA
+function paintFavoriteShows() {
+  let htmlCode = "";
+
+  for (const favorite of favorites) {
+    //console.log(movie.show.id);
+    htmlCode += `<li class="list__item js-item" id="${favorite.show.id}">`;
+    htmlCode += `<p class="title__item">Título: ${favorite.show.name}</p>`;
+    if (favorite.show.image !== null) {
+      let image = favorite.show.image.medium;
+      htmlCode += `<img src= "${image}"/>`;
+    } else {
+      let image = "https://via.placeholder.com/210x295/ffffff/666666/?text=TV";
+      htmlCode += `<img src= "${image}"/>`;
+    }
+    htmlCode += "</li>";
+  }
+  favoritesListElement.innerHTML = htmlCode;
+
+  listenMovieEvents();
 }
