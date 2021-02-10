@@ -46,11 +46,12 @@ function handleForm(ev) {
 }
 formElement.addEventListener("submit", handleForm);
 
-//PINTAR PELICULAS
+//PINTAR EL ARRAY DE LAS SERIES BUSCADAS
 function paintShows() {
   let htmlCode = "";
 
   for (const movie of movies) {
+    //EL "IF" PINTA EL MARCADO DE FAVORITA EN LA LISTA DE BUSQUEDA
     if (isFavoriteMovie(movie) === true) {
       htmlCode += `<li class="list__item js-item selected-container" id="${movie.show.id}">`;
       htmlCode += `<p class="title__item selected-title">Título: ${movie.show.name}</p>`;
@@ -73,7 +74,7 @@ function paintShows() {
   listenMovieEvents();
 }
 
-//DEFINIR PALETAS FAVORITAS
+//GESTIONA MARCADO DE FAVORITAS EN LA LISTA DE BÚSQUEDA
 function isFavoriteMovie(movie) {
   const favoriteFound = favorites.find((favorite) => {
     return favorite.show.id === movie.show.id;
@@ -85,7 +86,7 @@ function isFavoriteMovie(movie) {
   }
 }
 
-//ESCUCHAR EVENTOS FAVORITAS
+//ESCUCHAR EVENTO trae todos los <li> y con un bucle hace que se escuche el evento en cada <li>
 function listenMovieEvents() {
   const movieElements = document.querySelectorAll(".js-item");
   for (const movieElement of movieElements) {
@@ -93,17 +94,20 @@ function listenMovieEvents() {
   }
 }
 
+//CREA ARRAY DE FAVORITAS
 function handleMovie(ev) {
   const clickedMovieId = parseInt(ev.currentTarget.id);
   const favoritesFoundIndex = favorites.findIndex(function (favorite) {
     return favorite.show.id === clickedMovieId;
   });
+  //if -> SI EL INDEX NO ESTÁ EN EL ARRAY DE FAVORITAS SE AÑADE
   if (favoritesFoundIndex === -1) {
     const movieFound = movies.find(function (movie) {
       return movie.show.id === clickedMovieId;
     });
     favorites.push(movieFound);
   } else {
+    //SI EL INDEX YA ESTÁ EN EL ARRAY SE ELIMINA
     favorites.splice(favoritesFoundIndex, 1);
   }
   paintShows();
@@ -116,7 +120,6 @@ function paintFavoriteShows() {
   let htmlCode = "";
 
   for (const favorite of favorites) {
-    //console.log(movie.show.id);
     htmlCode += `<li class="list__itemFav js-item" id="${favorite.show.id}">`;
     htmlCode += `<p class="title__itemFav">Título: ${favorite.show.name}</p>`;
     if (favorite.show.image !== null) {
