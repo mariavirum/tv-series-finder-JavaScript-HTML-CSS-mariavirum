@@ -116,3 +116,10 @@
 .photo__itemReplace {
   width: 70%;
 }
+
+.button-reset {
+  padding: 10px 30px;
+  margin: 10px;
+  background-color: #641c34;
+  color: whitesmoke;
+}
