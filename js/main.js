@@ -52,8 +52,8 @@ function paintShows() {
 
   for (const movie of movies) {
     if (isFavoriteMovie(movie) === true) {
-      htmlCode += `<li class="list__item js-item favorite-container" id="${movie.show.id}">`;
-      htmlCode += `<p class="title__item favorite-title">Título: ${movie.show.name}</p>`;
+      htmlCode += `<li class="list__item js-item selected-container" id="${movie.show.id}">`;
+      htmlCode += `<p class="title__item selected-title">Título: ${movie.show.name}</p>`;
     } else {
       htmlCode += `<li class="list__item js-item " id="${movie.show.id}">`;
       htmlCode += `<p class="title__item">Título: ${movie.show.name}</p>`;
@@ -61,10 +61,10 @@ function paintShows() {
 
     if (movie.show.image !== null) {
       let image = movie.show.image.medium;
-      htmlCode += `<img src= "${image}"/>`;
+      htmlCode += `<img class="photo__item" src= "${image}"/>`;
     } else {
       let image = "https://via.placeholder.com/210x295/ffffff/666666/?text=TV";
-      htmlCode += `<img src= "${image}"/>`;
+      htmlCode += `<img class="photo__itemReplace" src= "${image}"/>`;
     }
     htmlCode += "</li>";
   }
@@ -117,11 +117,11 @@ function paintFavoriteShows() {
 
   for (const favorite of favorites) {
     //console.log(movie.show.id);
-    htmlCode += `<li class="list__item js-item" id="${favorite.show.id}">`;
-    htmlCode += `<p class="title__item">Título: ${favorite.show.name}</p>`;
+    htmlCode += `<li class="list__itemFav js-item" id="${favorite.show.id}">`;
+    htmlCode += `<p class="title__itemFav">Título: ${favorite.show.name}</p>`;
     if (favorite.show.image !== null) {
       let image = favorite.show.image.medium;
-      htmlCode += `<img src= "${image}"/>`;
+      htmlCode += `<img class="photo__itemFav" src= "${image}"/>`;
     } else {
       let image = "https://via.placeholder.com/210x295/ffffff/666666/?text=TV";
       htmlCode += `<img src= "${image}"/>`;
