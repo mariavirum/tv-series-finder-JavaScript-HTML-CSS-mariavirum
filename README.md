@@ -2,14 +2,14 @@
 
 
 
-**Web: Busca una serie Y crea tu lista de favoritas**
+** Web: Busca una serie y crea tu lista de favoritas **
 
 
 -Ejercicio para crear una web de búsqueda de series.
 
 -El usuario introduce el título o parte del título que desee en el input de texto, al pulsar en el botón "Buscar" recibe de la Api las opciones posibles.
 
--Cada serie tiene un título y una foto.
+-Cada serie posee un título y una foto.
 
 -Entre esas opciones podrá seleccionar sus series favoritas haciendo click sobre ellas, las series quedarán marcadas y además pasarán a una lista de favoritos que hay a la izquierda.
 
@@ -19,6 +19,7 @@
 
 
 MARÍA A. VIRUMBRALES
+
 
 
  ![Imagen de mi web](/images/FotoWebMaria.png)
