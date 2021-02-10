@@ -5,6 +5,7 @@ const buttonElement = document.querySelector(".js-button");
 const searchesListElement = document.querySelector(".js-searches-list");
 const formElement = document.querySelector(".js-form");
 const favoritesListElement = document.querySelector(".js-favorite-list");
+const buttonResetElement = document.querySelector(".js-buttonReset");
 
 let movies = [];
 let favorites = [];
@@ -135,6 +136,18 @@ function paintFavoriteShows() {
 
   listenMovieEvents();
 }
+
+//BOTON ELIMINAR LISTA ENTERA DE FAVORITOS
+
+function resetFavoritesList() {
+  favorites = [];
+
+  paintShows();
+  paintFavoriteShows();
+  setInLocalStorage();
+}
+
+buttonResetElement.addEventListener("click", resetFavoritesList);
 
 //ARRANCAR
 getFromLocalStorage();
