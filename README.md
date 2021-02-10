@@ -16,4 +16,4 @@
 -La lista de favoritos quedará guardada aunque se refresque la página.
 
 
-An image: ![Imagen de mi web](/images/FotoWebMaria.png)
+ ![Imagen de mi web](/images/FotoWebMaria.png)
