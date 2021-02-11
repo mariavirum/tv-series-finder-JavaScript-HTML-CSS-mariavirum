@@ -6,6 +6,7 @@ const searchesListElement = document.querySelector(".js-searches-list");
 const formElement = document.querySelector(".js-form");
 const favoritesListElement = document.querySelector(".js-favorite-list");
 const buttonResetElement = document.querySelector(".js-buttonReset");
+const buttonFav = document.querySelector(".js-buttonFav");
 
 let movies = [];
 let favorites = [];
@@ -60,6 +61,8 @@ function paintShows() {
       htmlCode += `<li class="list__item js-item " id="${movie.show.id}">`;
       htmlCode += `<p class="title__item">Título: ${movie.show.name}</p>`;
     }
+    //let time = movie.show.schedule.time;
+    htmlCode += `<p>Hora de emisión: ${movie.show.schedule.time}</p>`;
 
     if (movie.show.image !== null) {
       let image = movie.show.image.medium;
@@ -136,6 +139,16 @@ function paintFavoriteShows() {
 
   listenMovieEvents();
 }
+
+//BOTON FAV
+
+function paintFavButton() {
+  for (const favorite of favorites) {
+    console.log(favorite.show.name);
+  }
+}
+
+buttonFav.addEventListener("click", paintFavButton);
 
 //BOTON ELIMINAR LISTA ENTERA DE FAVORITOS
 
