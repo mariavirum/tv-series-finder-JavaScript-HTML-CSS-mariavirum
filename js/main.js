@@ -9,6 +9,7 @@ const buttonResetElement = document.querySelector(".js-buttonReset");
 
 let movies = [];
 let favorites = [];
+let defaultImage = "https://via.placeholder.com/210x295/ffffff/666666/?text=TV";
 
 //Coger datos API
 function callToApi() {
@@ -33,7 +34,6 @@ function setInLocalStorage() {
 function getFromLocalStorage() {
   const localStorageFavorites = localStorage.getItem("favorites");
   if (localStorageFavorites === null) {
-    callToApi();
   } else {
     const arrayFavorites = JSON.parse(localStorageFavorites);
     favorites = arrayFavorites;
@@ -65,7 +65,7 @@ function paintShows() {
       let image = movie.show.image.medium;
       htmlCode += `<img class="photo__item" src= "${image}"/>`;
     } else {
-      let image = "https://via.placeholder.com/210x295/ffffff/666666/?text=TV";
+      let image = defaultImage;
       htmlCode += `<img class="photo__itemReplace" src= "${image}"/>`;
     }
     htmlCode += "</li>";
@@ -80,11 +80,9 @@ function isFavoriteMovie(movie) {
   const favoriteFound = favorites.find((favorite) => {
     return favorite.show.id === movie.show.id;
   });
-  if (favoriteFound === undefined) {
-    return false;
-  } else {
-    return true;
-  }
+  //OPERADOR TERNARIO en vez de If/else
+  const favoriteValue = favoriteFound === undefined ? false : true;
+  return favoriteValue;
 }
 
 //ESCUCHAR EVENTO trae todos los <li> y con un bucle hace que se escuche el evento en cada <li>
@@ -127,7 +125,7 @@ function paintFavoriteShows() {
       let image = favorite.show.image.medium;
       htmlCode += `<img class="photo__itemFav" src= "${image}"/>`;
     } else {
-      let image = "https://via.placeholder.com/210x295/ffffff/666666/?text=TV";
+      let image = defaultImage;
       htmlCode += `<img src= "${image}"/>`;
     }
     htmlCode += "</li>";
